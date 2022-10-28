@@ -1,50 +1,18 @@
 const express = require('express')
-
+const {crearUser, traerUsers, traerUserPorId, actualizarUser, eliminarUser} =require ('../controllers/UserController')
+// const { route } = require('./BootcampRoutes')
 const router = express.Router()
 
 
-//Establecer las rutas de Usuario
+//Rutas de usuario
 
-router.get('/', (req, res)=>{
-    res.status(200).json(
-    {
-        "message" : "aqui se va a mostrar todos los Usuario"
-    }
-    )
-})
+router.route('/')
+            .get(traerUsers)
+            .post(crearUser)
 
-router.get('/:id' , (req, res)=>{
-    res.status(200).json(
-        {
-            "message" : `aqui se va mostrarse el usuario cuyo id es: ${req.params.id}` 
-        }
-        )
-})
-
-router.post('/', (req, res)=>{
-    res.status(201).json(
-        {
-            "message" : `aqui va a crear el usuario` 
-        }
-        )
-})
-
-
-router.put('/:id' , (req, res)=>{
-    res.status(200).json(
-        {
-            "message" : `aqui se va a actualizar cuyo Usuario tenga como id: ${req.params.id}` 
-        }
-        )
-})
-
-
-router.delete('/:id' , (req, res)=>{
-    res.status(200).json(
-        {
-            "message" : `aqui se va a eliminar cuyo Usuario tenga como id: ${req.params.id}` 
-        }
-        )
-})
+router.route('/:id')
+            .get(traerUserPorId)
+            .put(actualizarUser)
+            .delete(eliminarUser)
 
 module.exports = router
