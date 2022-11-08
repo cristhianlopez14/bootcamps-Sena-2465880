@@ -21,7 +21,6 @@ const app = express()
 app.use(express.json())
 
 connectDB()
-
 app.use('/api/v1/bootcamps', bootcampRoutes )
 app.use('/api/v1/users', userRoutes )
 
