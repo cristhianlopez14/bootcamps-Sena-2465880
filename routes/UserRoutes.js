@@ -4,11 +4,11 @@ const {crearUser, traerUsers, traerUserPorId, actualizarUser, eliminarUser} =req
 const router = express.Router()
 
 
-//Rutas de usuario
+//Rutas de usuario 
 
 router.route('/')
             .get(traerUsers)
-            .post(crearUser)
+            .post(crearUser) 
 
 router.route('/:id')
             .get(traerUserPorId)

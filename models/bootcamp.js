@@ -1,6 +1,6 @@
 'use strict';
 const {
-  Model
+  Model 
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Bootcamp extends Model {
@@ -14,11 +14,80 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Bootcamp.init({
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    phone: DataTypes.STRING,
-    average_cost: DataTypes.FLOAT,
-    average_rating: DataTypes.INTEGER
+    name: {
+      type:DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate:{
+        isAlpha:{
+          args: true,
+          msg: 'Bootcamp solo debe tener letras'
+        },
+        notEmpty:{
+          args: true,
+          msg: 'Bootcamp no debe quedar vacio'
+        },
+        notNull:{
+          args: true,
+          msg: 'Bootcamp debe contener los datos requeridos'
+        } 
+      }
+    },
+  
+    description:{
+      type:DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate:{
+        notEmpty:{
+          args: true,
+          msg: 'Descripción no debe quedar vacio'
+        },
+        notNull:{
+          args: true,
+          msg: 'Descripción debe contener los datos requeridos'
+        } 
+      }
+    },
+    phone:{
+      type:DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate:{
+        notEmpty:{
+          args: true,
+          msg: 'Phone no debe quedar vacio'
+        },
+        notNull:{
+          args: true,
+          msg: 'Phone debe contener los datos requeridos'
+        }
+      }
+    },
+    average_cost:{
+      type: DataTypes.FLOAT,
+      unique: true,
+      validate:{
+        isAlpha:{
+          args: true,
+          msg: 'average_cost solo debe tener letras'
+        },
+        notEmpty:{
+          args: true,
+          msg: 'average_cost no debe quedar vacio'
+        }
+      }
+    },
+    average_rating:{
+      type: DataTypes.INTEGER,
+      unique: true,
+      validate:{
+        notEmpty:{
+          args: true,
+          msg: 'average_rating no debe quedar vacio'
+        }
+      }
+    } 
   }, {
     sequelize,
     modelName: 'Bootcamp',
