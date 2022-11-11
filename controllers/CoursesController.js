@@ -170,11 +170,9 @@ exports.putcourses = async (request, response)=>{
 //Delete
 exports.deletecourses = async(req, res)=>{
     try {
-        //buscar al usuario
         const deletec = await courses.findByPk(req.params.id)
 
         if (!deletec) {
-            //usuario no encontrado
             res
                 .status(422)
                 .json({
